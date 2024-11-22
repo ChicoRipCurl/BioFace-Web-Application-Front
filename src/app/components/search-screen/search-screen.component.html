@@ -1,0 +1,30 @@
+<div class="search-container">
+  <h1 class="title">CAMPUS</h1>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [value]="searchTerm"
+      (input)="onSearch($event)"
+      placeholder="Buscar campus..."
+      class="search-input"
+    >
+  </div>
+
+  <div class="campus-grid">
+    <div *ngFor="let campus of filteredCampuses"
+         class="campus-item"
+         (click)="navigateToFaculties(campus.id)">
+      <div class="campus-image">
+        <img [src]="campus.image" [alt]="campus.name" (error)="handleError(campus)">
+      </div>
+      <p class="campus-name">{{ campus.name }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading-spinner">
+    <div class="spinner"></div>
+  </div>
+</div>
+
+

@@ -1,0 +1,24 @@
+.mat-toolbar {
+    margin: 8px 0;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    color: #825619;
+    .spacer {
+        flex: 1 1 auto;
+    }
+    .title{
+        font-size: xx-large;
+    }
+    .subtitle{
+        font-size: small;
+    }
+    .button_style {
+        font-size: large;
+        color: #825619;
+        margin: 16px;
+        font-weight: bold;
+    }
+  }

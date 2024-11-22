@@ -1,0 +1,31 @@
+<div class="students-container">
+  <h1 class="title">ESTUDIANTES</h1>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [value]="searchTerm"
+      (input)="onSearch($event)"
+      placeholder="Buscar estudiante..."
+      class="search-input"
+    >
+  </div>
+
+  <div class="students-grid">
+    <div *ngFor="let student of filteredStudents"
+         class="student-item">
+      <div class="student-image">
+        <img [src]="student.profile_picture" [alt]="getFullName(student)" (error)="handleError(student)">
+      </div>
+      <p class="student-name">{{ getFullName(student) }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading-spinner">
+    <div class="spinner"></div>
+  </div>
+
+  <div *ngIf="!loading && filteredStudents.length === 0" class="no-results">
+    <p>No se encontraron estudiantes</p>
+  </div>
+</div>

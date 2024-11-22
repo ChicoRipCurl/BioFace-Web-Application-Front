@@ -1,0 +1,71 @@
+<div class="register-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="title">Registro</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput [(ngModel)]="student.name" name="name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Apellido</mat-label>
+          <input matInput [(ngModel)]="student.lastname" name="lastname" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" [(ngModel)]="student.email" name="email" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="student.password" name="password" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Mostrar/ocultar contraseña'">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Universidad</mat-label>
+          <mat-select [(ngModel)]="selectedUniversityId" (selectionChange)="onUniversityChange($event.value)" name="university" required>
+            <mat-option *ngFor="let university of universities" [value]="university.id">{{ university.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Campus</mat-label>
+          <mat-select [(ngModel)]="selectedCampusId" (selectionChange)="onCampusChange($event.value)" name="campus" required>
+            <mat-option *ngFor="let campus of campuses" [value]="campus.id">{{ campus.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Facultad</mat-label>
+          <mat-select [(ngModel)]="selectedFacultyId" name="faculty" required>
+            <mat-option *ngFor="let faculty of faculties" [value]="faculty.id">{{ faculty.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Rol</mat-label>
+          <mat-select [(ngModel)]="selectedRole" name="role" required>
+            <mat-option value="student">Estudiante</mat-option>
+            <mat-option value="administrator">Administrador</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="btn full-width" type="submit" [disabled]="isLoading">
+          <mat-spinner diameter="20" *ngIf="isLoading"></mat-spinner>
+          {{ isLoading ? 'Registrando...' : 'Registrarse' }}
+        </button>
+      </form>
+      <div class="register-link">
+        <p>¿Ya tienes una cuenta? <a href="/login">Inicia aquí</a></p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <img src="./assets/images/login_banner.png" alt="Login Image">
+</div>

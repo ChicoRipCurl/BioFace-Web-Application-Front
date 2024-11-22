@@ -1,0 +1,28 @@
+<div class="faculty-container">
+  <h1 class="title">FACULTADES</h1>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [value]="searchTerm"
+      (input)="onSearch($event)"
+      placeholder="Buscar facultad..."
+      class="search-input"
+    >
+  </div>
+
+  <div class="faculty-grid">
+    <div *ngFor="let faculty of filteredFaculties"
+         class="faculty-item"
+         (click)="navigateToStudents(faculty.id)">
+      <div class="faculty-image">
+        <img [src]="faculty.image" [alt]="faculty.name" (error)="handleError(faculty)">
+      </div>
+      <p class="faculty-name">{{ faculty.name }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading-spinner">
+    <div class="spinner"></div>
+  </div>
+</div>

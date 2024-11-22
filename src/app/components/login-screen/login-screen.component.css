@@ -1,0 +1,47 @@
+.login-container {
+  padding-inline: 12%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  height: 100vh;
+  background-color: #EDCF55;
+}
+
+.title {
+  font-size: 2.5rem;
+  padding-bottom: 1em;
+  text-align: center;
+  color: #382323;
+}
+.btn {
+  width: 100%;
+  background-color: #382323;
+}
+mat-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2em;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.example-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}

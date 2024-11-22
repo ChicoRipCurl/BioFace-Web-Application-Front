@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>Editar Perfil</h2>
+<mat-dialog-content>
+  <form #editForm="ngForm">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="editedUser.name" name="name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Apellido</mat-label>
+      <input matInput [(ngModel)]="editedUser.lastname" name="lastname" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="editedUser.email" name="email" required type="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>URL de imagen de perfil</mat-label>
+      <input matInput [(ngModel)]="editedUser.profile_picture" name="profile_picture">
+    </mat-form-field>
+
+    <div class="password-section">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Nueva Contraseña</mat-label>
+        <input matInput [(ngModel)]="editedUser.newPassword"
+               name="newPassword"
+               [type]="showPassword ? 'text' : 'password'">
+        <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button">
+          <mat-icon>{{showPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-hint>Deja en blanco para mantener la contraseña actual</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Confirmar Nueva Contraseña</mat-label>
+        <input matInput [(ngModel)]="editedUser.confirmPassword"
+               name="confirmPassword"
+               [type]="showPassword ? 'text' : 'password'">
+      </mat-form-field>
+    </div>
+
+    <div class="error-message" *ngIf="passwordError">
+      {{ passwordError }}
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="onSave()" [disabled]="!editForm.form.valid">
+    Guardar
+  </button>
+</mat-dialog-actions>

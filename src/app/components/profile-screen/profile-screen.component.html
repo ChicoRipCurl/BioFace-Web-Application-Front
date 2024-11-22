@@ -1,0 +1,35 @@
+<div class="main-container">
+  <div class="content-container">
+    <mat-card class="main-card-container">
+      <mat-card-content>
+        <table>
+          <tr>
+            <td>
+              <img class="profile-image"
+                   [src]="currentUser?.profile_picture || 'https://material.angular.io/assets/img/examples/shiba2.jpg'"
+                   alt="Profile">
+            </td>
+            <td style="padding-left: 20px;" class="main-card-text">
+              <div>
+                <p><strong>Nombre Completo:</strong> {{currentUser?.name}} {{currentUser?.lastname}}</p>
+                <p><strong>Email:</strong> {{currentUser?.email}}</p>
+                <p><strong>Universidad:</strong> {{currentUser?.institution_name}}</p>
+                <p><strong>Rol:</strong> {{currentUser?.role}}</p>
+                <p><strong>Campus:</strong> {{campusName}}</p>
+                <p><strong>Facultad:</strong> {{facultyName}}</p>
+              </div>
+              <button mat-icon-button color="primary" (click)="editProfile()" class="edit-button">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/UPC_logo_transparente.png"
+           class="institution-logo"
+           alt="UPC Logo">
+    </div>
+  </div>
+</div>

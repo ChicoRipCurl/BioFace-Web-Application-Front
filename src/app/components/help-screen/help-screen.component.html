@@ -1,0 +1,24 @@
+<div class="help-container">
+  <h1 class="title">Preguntas Frecuentes</h1>
+
+  <div class="faq-section">
+    <div class="questions-list">
+      <div
+        *ngFor="let faq of faqs"
+        class="question-item"
+        [class.active]="selectedFaq?.id === faq.id"
+        (click)="selectFaq(faq)"
+      >
+        <div class="question-content">
+          {{ faq.question }}
+        </div>
+        <div class="arrow-icon">›</div>
+      </div>
+    </div>
+
+    <div class="answer-card" *ngIf="selectedFaq">
+      <h2>{{ selectedFaq.question }}</h2>
+      <p>{{ selectedFaq.answer }}</p>
+    </div>
+  </div>
+</div>

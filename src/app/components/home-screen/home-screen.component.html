@@ -1,0 +1,71 @@
+<div class="home-container">
+  <!-- Cameras Section -->
+  <div class="section-title">CAMERA</div>
+  <div class="cameras-container">
+    <button class="nav-button prev" (click)="previousCameraPage()">&lt;</button>
+    <div class="camera-grid">
+      <div class="camera-feed" *ngFor="let feed of getCurrentCameraFeeds()">
+        <img [src]="feed" alt="Camera Feed">
+      </div>
+    </div>
+    <button class="nav-button next" (click)="nextCameraPage()">&gt;</button>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="main-content">
+    <!-- Access Log Section -->
+    <div class="access-log-section">
+      <div class="section-title">STUDENT ACCESS LOG</div>
+      <div class="table-container">
+        <table>
+          <thead>
+          <tr>
+            <th>Date</th>
+            <th>Time of Entry</th>
+            <th>Time of Exit</th>
+            <th>Student Name</th>
+            <th>Access Point</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let log of accessLogs"
+              (click)="toggleStudentDetails(log.studentId)"
+              [class.selected]="selectedStudent?.id === log.studentId">
+            <td>{{log.date}}</td>
+            <td>{{log.timeEntry}}</td>
+            <td>{{log.timeExit}}</td>
+            <td>{{log.studentName}}</td>
+            <td>{{log.accessPoint}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Student Details Section -->
+    <div class="student-details-section" *ngIf="selectedStudent">
+      <div class="section-title">STUDENT DETAILS</div>
+      <div class="student-card">
+        <div class="student-card-content">
+          <div class="student-photo-container">
+            <img [src]="selectedStudent.imageUrl" alt="Student Photo" class="student-photo">
+          </div>
+          <div class="student-info">
+            <div class="info-item">
+              <strong>Full Name:</strong>
+              <span>{{selectedStudent.name}}</span>
+            </div>
+            <div class="info-item">
+              <strong>Email:</strong>
+              <span>{{selectedStudent.email}}</span>
+            </div>
+            <div class="info-item">
+              <strong>Program:</strong>
+              <span>{{selectedStudent.facultad}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

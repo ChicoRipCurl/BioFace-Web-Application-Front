@@ -1,0 +1,28 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 3rem;
+  background-color: #EDCF55;
+}
+.title {
+  font-size: 2.5rem;
+  padding-bottom: 1em;
+  text-align: center;
+  color: #382323;
+}
+.btn {
+  width: 100%;
+  background-color: #382323;
+}
+mat-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 2em;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
